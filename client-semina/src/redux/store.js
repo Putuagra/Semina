@@ -7,8 +7,9 @@ import {
 
 import { thunk } from "redux-thunk";
 import authReducer from "./auth/reducer";
-import categoriesReducer from "./categories/reducer"
-import notificationReducer from "./notifikasi/reducer"
+import categoriesReducer from "./categories/reducer";
+import notificationReducer from "./notifikasi/reducer";
+import talentsReducer from "./talents/reducer";
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -16,6 +17,7 @@ const rootReducers = combineReducers({
   auth: authReducer,
   categories: categoriesReducer,
   notification: notificationReducer,
+  talents: talentsReducer,
 });
 
 const store = createStore(
