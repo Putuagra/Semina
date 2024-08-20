@@ -68,7 +68,7 @@ export default function EditCategory() {
         <SBreadcrumb
           textSecond={"Categories"}
           urlSecond={"/categories"}
-          textThird={"Edit"}
+          textThird="Edit"
         />
         {alert.status && <SAlert type={alert.type} message={alert.message} />}
         <Form

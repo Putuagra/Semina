@@ -6,7 +6,7 @@ import SAlert from "../../components/Alert";
 import Form from "./form";
 import { useDispatch } from "react-redux";
 import { postData } from "../../utils/fetch";
-import {setNotification} from '../../redux/notifikasi/actions'
+import { setNotification } from "../../redux/notifikasi/actions";
 
 export default function CreateCategory() {
   const navigate = useNavigate();
@@ -33,7 +33,7 @@ export default function CreateCategory() {
       dispatch(
         setNotification(
           true,
-          'success',
+          "success",
           `berhasil tambah kategori ${res.data.data.name}`
         )
       );

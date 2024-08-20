@@ -71,35 +71,33 @@ export default function PageCategories() {
   };
 
   return (
-    <>
-      <Container className="mt-3">
-        <SBreadcrumb textSecond={"Categories"} />
-        {access.tambah && (
-          <SButton
-            className={"mb-3"}
-            action={() => navigate("/categories/create")}
-          >
-            Tambah
-          </SButton>
-        )}
+    <Container className="mt-3">
+      <SBreadcrumb textSecond={"Categories"} />
+      {access.tambah && (
+        <SButton
+          className={"mb-3"}
+          action={() => navigate("/categories/create")}
+        >
+          Tambah
+        </SButton>
+      )}
 
-        {notification.status && (
-          <SAlert
-            type={notification.typeNotification}
-            message={notification.message}
-          />
-        )}
-
-        <Table
-          status={categories.status}
-          thead={["Nama", "Aksi"]}
-          data={categories.data}
-          tbody={["name"]}
-          editUrl={access.edit ? `/categories/edit` : null}
-          deleteAction={access.hapus ? (id) => handleDelete(id) : null}
-          withoutPagination
+      {notification.status && (
+        <SAlert
+          type={notification.typeNotification}
+          message={notification.message}
         />
-      </Container>
-    </>
+      )}
+
+      <Table
+        status={categories.status}
+        thead={["Nama", "Aksi"]}
+        data={categories.data}
+        tbody={["name"]}
+        editUrl={access.edit ? `/categories/edit` : null}
+        deleteAction={access.hapus ? (id) => handleDelete(id) : null}
+        withoutPagination
+      />
+    </Container>
   );
 }
