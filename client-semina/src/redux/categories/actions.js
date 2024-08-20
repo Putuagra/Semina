@@ -31,7 +31,7 @@ export const errorFetchingCategories = () => {
 
 export const fetchCategories = () => {
   return async (dispatch) => {
-    dispatch(startFetchingCategories);
+    dispatch(startFetchingCategories());
 
     try {
       setTimeout(() => {
@@ -46,7 +46,7 @@ export const fetchCategories = () => {
         })
       );
     } catch (error) {
-      dispatch(errorFetchingCategories);
+      dispatch(errorFetchingCategories());
     }
   };
 };

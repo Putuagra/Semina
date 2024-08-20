@@ -57,7 +57,7 @@ const remove = async (req, res, next) => {
   try {
     const result = await deleteCategory(req);
     res.status(StatusCodes.OK).json({
-      // data: result,
+      data: result,
       msg: 'Data berhasil dihapus',
     });
   } catch (err) {
