@@ -4,10 +4,13 @@ import { Container } from "react-bootstrap";
 import SBreadcrumb from "../../components/Breadcrumb";
 import SAlert from "../../components/Alert";
 import Form from "./form";
+import { useDispatch } from "react-redux";
+import { getData, putData } from "../../utils/fetch";
+import { setNotification } from "../../redux/notifikasi/actions";
 
 export default function EditCategory() {
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   const { categoryId } = useParams();
 
   const [form, setForm] = useState({
@@ -26,7 +29,10 @@ export default function EditCategory() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const fetchOneCategory = async () => {};
+  const fetchOneCategory = async () => {
+    const res = await getData(`/cms/categories/${categoryId}`);
+    setForm({ ...form, name: res.data.data.name });
+  };
 
   useEffect(() => {
     fetchOneCategory();
@@ -34,16 +40,24 @@ export default function EditCategory() {
 
   const handleSubmit = async () => {
     setIsLoading(true);
-    try {
+    const res = await putData(`/cms/categories/${categoryId}`, form);
+    if (res?.data?.data) {
+      dispatch(
+        setNotification(
+          true,
+          "success",
+          `berhasil ubah kategori ${res.data.data.name}`
+        )
+      );
       navigate("/categories");
       setIsLoading(false);
-    } catch (err) {
+    } else {
       setIsLoading(false);
       setAlert({
         ...alert,
         status: true,
         type: "danger",
-        message: err.response.data.msg,
+        message: res.response.data.msg,
       });
     }
   };
@@ -58,6 +72,7 @@ export default function EditCategory() {
         />
         {alert.status && <SAlert type={alert.type} message={alert.message} />}
         <Form
+          edit
           form={form}
           isLoading={isLoading}
           handleChange={handleChange}
