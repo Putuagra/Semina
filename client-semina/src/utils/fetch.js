@@ -1,5 +1,4 @@
 import axios from "axios";
-import React from "react";
 import { config } from "../configs";
 import handleError from "./handleError";
 
