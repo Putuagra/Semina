@@ -2,6 +2,7 @@ import React from "react";
 import { Table } from "react-bootstrap";
 import Tbody from "../TbodyWithAction";
 import Thead from "../Thead";
+import Pagination from "../Pagination";
 
 export default function TableWithAction({
   withoutPagination,
@@ -30,11 +31,11 @@ export default function TableWithAction({
           customAction={customAction}
         />
       </Table>
-      {/* {!withoutPagination && data.length ? (
+      {!withoutPagination && data.length ? (
           <Pagination pages={pages} handlePageClick={handlePageClick} />
         ) : (
           ''
-        )} */}
+        )}
     </>
   );
 }
