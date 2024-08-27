@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import SBreadCrumb from "../../components/Breadcrumb";
 import Table from "../../components/TableWithAction";
@@ -32,13 +32,13 @@ export default function PageOrder() {
 
   return (
     <Container className="mt-3">
-      <SBreadCrumb textSecound={"Orders"} />
+      <SBreadCrumb textSecond={"Orders"} />
       <Row>
         <Col
           className="cursor-pointer position-relative"
           onClick={() => setIsShowed(true)}
         >
-          <SearchInput disabled query={displayDate} />
+          <SearchInput readOnly query={displayDate} onClick={() => setIsShowed(true)} />
           {isShowed ? (
             <DateRange
               date={orders.date}
@@ -54,7 +54,10 @@ export default function PageOrder() {
       </Row>
 
       {notification.status && (
-        <SAlert type={notification.typeNotification} message={notification.message} />
+        <SAlert
+          type={notification.typeNotification}
+          message={notification.message}
+        />
       )}
       <Table
         status={orders.status}
